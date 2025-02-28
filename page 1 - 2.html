@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Journey</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #fce4ec;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            position: relative;
+        }
+        .background-image {
+            display: block;
+            margin: 20px auto; /* Centers the image and adds space above */
+            width: 25%; /* Further reduced size by 30% */
+            opacity: 0; /* Initially hidden */
+            animation: fadeIn 2s ease-in 2s forwards; /* Fades in after 2 seconds */
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            margin-top: 20px; /* Moves text higher */
+        }
+        h1 {
+            font-size: 2em;
+            animation: fadeIn 2s ease-in;
+        }
+        .centered-text {
+            font-size: 2em;
+            color: red;
+            font-family: cursive;
+            text-align: center;
+            margin-top: 50px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .floating-emoji {
+            position: absolute;
+            font-size: 2em;
+            animation: floatAnimation 5s linear infinite;
+        }
+        @keyframes floatAnimation {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(-50px); opacity: 0.7; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>HAPPY HARSHITHA DAYYY !! 🎈❤️🎂</h1>
+    </div>
+    <img src="https://i.postimg.cc/3R6DPbhy/IMG-20240502-WA0068.jpg" alt="Background Image" class="background-image">
+    <div class="content">
+        <button onclick="startJourney()" style="padding: 10px 20px; font-size: 20px; background-color: red; color: white; border-radius: 10px; margin-top: 20px; opacity: 0; animation: fadeIn 2s ease-in 4s forwards;">CLICK HERE FOR A SURPRISE</button>
+    </div>
+    
+    <script>
+        function startJourney() {
+            document.body.innerHTML = "<h1 class='centered-text'>Now I am gonna take you on a journey of our 3 years...</h1>";
+            setTimeout(() => {
+                let countdownText = document.createElement("h1");
+                document.body.appendChild(countdownText);
+                let countdown = ["3", "2", "1", "0.9", "0.8", "Haha I'm joking, let's dive in!"];
+                let index = 0;
+                let interval = setInterval(() => {
+                    countdownText.innerText = countdown[index];
+                    index++;
+                    if (index === countdown.length) {
+                        clearInterval(interval);
+                        setTimeout(() => {
+                            window.location.href = "timeline.html";
+                        }, 2000);
+                    }
+                }, 1000);
+            }, 3000);
+        }
+        
+        function createFloatingEmojis() {
+            const emojis = ["🎂", "❤️", "💖", "🍰"];
+            for (let i = 0; i < 15; i++) {
+                let emoji = document.createElement("div");
+                emoji.className = "floating-emoji";
+                emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.style.left = Math.random() * 100 + "vw";
+                emoji.style.top = Math.random() * 100 + "vh";
+                document.body.appendChild(emoji);
+            }
+        }
+        
+        createFloatingEmojis();
+    </script>
+</body>
+</html>
